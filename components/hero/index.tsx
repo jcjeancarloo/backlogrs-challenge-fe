@@ -15,7 +15,7 @@ export default function Hero() {
                 Descubra seu novo companheiro peludo entre nossos pets.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-2 max-w-[500px]">
+            <div className="grid md:grid-cols-2 gap-4 max-w-[500px]">
               <Link
                 className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
                 href="#"
