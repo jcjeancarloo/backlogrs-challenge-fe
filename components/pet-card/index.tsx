@@ -18,7 +18,7 @@ export default function PetCard({
   name,
   animal,
   breed,
-  gender,
+  sex,
   isAvailable = true,
   age,
   img,
@@ -79,7 +79,7 @@ export default function PetCard({
                 <EqualIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                 <p className="text-sm text-gray-500 dark:text-gray-400">Gênero</p>
               </div>
-              <p>{gender === 'male' ? 'Macho' : 'Fêmea'}</p>
+              <p>{sex === 'male' ? 'Macho' : 'Fêmea'}</p>
             </div>
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
@@ -94,7 +94,7 @@ export default function PetCard({
             age={age}
             animal={animal}
             breed={breed}
-            gender={gender}
+            sex={sex}
             name={name}
             weight={2}
             img={img}

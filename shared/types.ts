@@ -4,7 +4,7 @@ export type PetItem = {
   img: string
   isAvailable: boolean
   breed: string
-  gender: 'male' | 'female'
+  sex: 'male' | 'female'
   age: number
   description: string
   weight: number

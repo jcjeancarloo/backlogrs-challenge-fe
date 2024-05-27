@@ -21,7 +21,7 @@ export default function ConfirmAdoption({
   age,
   breed,
   description,
-  gender,
+  sex,
   img,
   name,
   weight,
@@ -69,7 +69,7 @@ export default function ConfirmAdoption({
                 <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <EqualIcon className="w-4 h-4" />
                   <span className="font-medium">Gênero:</span>
-                  {gender === 'male' ? 'Macho' : 'Fêmea'}
+                  {sex === 'male' ? 'Macho' : 'Fêmea'}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <CalendarIcon className="w-4 h-4" />
@@ -88,7 +88,7 @@ export default function ConfirmAdoption({
           <div className="text-sm text-gray-500 dark:text-gray-400">
             Importante: A retirada do pet deve ser combinada com o seu dono atual.
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between  -mb-4">
             <div className="flex items-center space-x-2">
               <Checkbox id="terms" />
               <Label htmlFor="terms">

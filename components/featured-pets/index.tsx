@@ -21,7 +21,7 @@ export default function FeaturedPets() {
             name="Buddy"
             animal="dog"
             breed="Golden Retriever"
-            gender="male"
+            sex="male"
             weight={10}
             age={3}
             description="Buddy é um Golden Retriever cheio de energia e amor para dar. Ele adora brincar e fazer
@@ -34,7 +34,7 @@ export default function FeaturedPets() {
             name="Buddy"
             animal="dog"
             breed="Golden Retriever"
-            gender="male"
+            sex="male"
             weight={10}
             age={3}
             description="Buddy é um Golden Retriever cheio de energia e amor para dar. Ele adora brincar e fazer
@@ -47,7 +47,7 @@ export default function FeaturedPets() {
             name="Buddy"
             animal="dog"
             breed="Golden Retriever"
-            gender="male"
+            sex="male"
             weight={10}
             age={3}
             description="Buddy é um Golden Retriever cheio de energia e amor para dar. Ele adora brincar e fazer
