@@ -28,7 +28,7 @@ export default function ConfirmAdoption({
 }: ConfirmAdoptionProps) {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button className="w-full" variant="default">
           Adotar Pet
         </Button>
