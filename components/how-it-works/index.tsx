@@ -10,7 +10,7 @@ export default function HowItWorks() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Como funciona
             </h2>
-            <p className="max-w-[700px] text-gray-500 text-xl dark:text-gray-400">
+            <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
               Siga estas etapas simples para adotar seu novo amigo peludo.
             </p>
           </div>
