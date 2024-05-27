@@ -19,7 +19,24 @@ const useAuth = () => {
   }
 
   const forgotPassword = async (email: string) => {
-    const { data } = await api.post('/auth/recover-password', { email })
+    const { data } = await api.post('/auth/reset-password', email)
+    return data
+  }
+
+  const resetPassword = async ({
+    email,
+    codeValidation,
+    password,
+  }: {
+    email: string
+    codeValidation: string
+    password: string
+  }) => {
+    const { data } = await api.post('/auth/set-new-password', {
+      email,
+      codeValidation,
+      newPassword: password,
+    })
     return data
   }
 
@@ -32,7 +49,6 @@ const useAuth = () => {
         avatar: data.avatar,
       })
       Cookies.set('token', data.access_token)
-      console.log(data)
       // router.push('/dashboard')
     },
     onError: (error: any) => {
@@ -59,6 +75,7 @@ const useAuth = () => {
         title: 'Nice!',
         description: 'E-mail enviado com sucesso',
       })
+      router.push('/new-password')
     },
     onError: (error: any) => {
       console.log(error)
@@ -71,12 +88,34 @@ const useAuth = () => {
 
   const forgot = (email: string) => forgotMutation.mutateAsync(email)
 
+  const newPassMutation = useMutation({
+    mutationFn: resetPassword,
+    onSuccess: () => {
+      toast({
+        title: 'Nice!',
+        description: 'Senha modificada com sucesso',
+      })
+      router.push('/auth')
+    },
+    onError: (error: any) => {
+      toast({
+        title: 'Ooops :( ',
+        description: error.response.data.message,
+      })
+    },
+  })
+
+  const newPass = (data: { email: string; codeValidation: string; password: string }) =>
+    newPassMutation.mutateAsync(data)
+
   return {
     login,
     logout,
     isLoading: loginMutation.isPending,
     forgot,
     forgotLoading: forgotMutation.isPending,
+    newPass,
+    newPassLoading: newPassMutation.isPending,
   }
 }
 

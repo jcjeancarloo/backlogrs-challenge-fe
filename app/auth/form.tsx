@@ -15,7 +15,7 @@ export default function Form() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm()
 
   return (
