@@ -17,7 +17,10 @@ export default function Page() {
   return (
     <div className="w-full max-w-6xl mx-auto py-12 px-4 md:px-6">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold">Encontre aqui seu amigo</h1>
+        <div className="flex flex-col">
+          <h1 className="text-2xl md:text-3xl font-bold">Olá, usuário</h1>
+          <p className="text-sm text-gray-500">Confira abaixo seus pets</p>
+        </div>
         <div className="flex items-center gap-4">
           <Popover>
             <PopoverTrigger asChild>

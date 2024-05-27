@@ -55,41 +55,41 @@ export default function PetCard({
           <div className="grid sm:grid-cols-2 gap-4 py-4">
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
-                <BoneIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                <p className="text-sm text-gray-500 dark:text-gray-400">Animal</p>
+                <BoneIcon className="w-4 h-4 text-gray-500" />
+                <p className="text-sm text-gray-500">Animal</p>
               </div>
               <p>{animal}</p>
             </div>
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
-                <PawPrintIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                <p className="text-sm text-gray-500 dark:text-gray-400">Raça</p>
+                <PawPrintIcon className="w-4 h-4 text-gray-500" />
+                <p className="text-sm text-gray-500">Raça</p>
               </div>
               <p>{breed}</p>
             </div>
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
-                <CalendarIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                <p className="text-sm text-gray-500 dark:text-gray-400">Idade</p>
+                <CalendarIcon className="w-4 h-4 text-gray-500" />
+                <p className="text-sm text-gray-500">Idade</p>
               </div>
               <p>{age} anos</p>
             </div>
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
-                <EqualIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                <p className="text-sm text-gray-500 dark:text-gray-400">Gênero</p>
+                <EqualIcon className="w-4 h-4 text-gray-500" />
+                <p className="text-sm text-gray-500">Gênero</p>
               </div>
               <p>{sex === 'male' ? 'Macho' : 'Fêmea'}</p>
             </div>
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
-                <WeightIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                <p className="text-sm text-gray-500 dark:text-gray-400">Peso</p>
+                <WeightIcon className="w-4 h-4 text-gray-500" />
+                <p className="text-sm text-gray-500">Peso</p>
               </div>
               <p>{weight} kg</p>
             </div>
           </div>
-          <p className="text-gray-500 dark:text-gray-400 text-justify text-sm">{description}</p>
+          <p className="text-gray-500 text-justify text-sm">{description}</p>
           <ConfirmAdoption
             age={age}
             animal={animal}

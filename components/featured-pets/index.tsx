@@ -10,7 +10,7 @@ export default function FeaturedPets() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Encontre seu pet
             </h2>
-            <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Descubra seu novo amigo peludo.
             </p>
           </div>

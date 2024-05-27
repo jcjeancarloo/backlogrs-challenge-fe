@@ -56,36 +56,36 @@ export default function ConfirmAdoption({
             <div className="grid gap-4">
               <div className="font-medium">{name}</div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm text-gray-500">
                   <BoneIcon className="w-4 h-4" />
                   <span className="font-medium">Animal:</span>
                   Cachorro
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm text-gray-500">
                   <PawPrintIcon className="w-4 h-4" />
                   <span className="font-medium">Raça:</span>
                   {breed}
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm text-gray-500">
                   <EqualIcon className="w-4 h-4" />
                   <span className="font-medium">Gênero:</span>
                   {sex === 'male' ? 'Macho' : 'Fêmea'}
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm text-gray-500">
                   <CalendarIcon className="w-4 h-4" />
                   <span className="font-medium">Idade:</span>
                   {age} anos
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-2 text-sm text-gray-500">
                   <WeightIcon className="w-4 h-4" />
                   <span className="font-medium">Peso:</span>
                   {weight} kg
                 </div>
               </div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">{description}</div>
+              <div className="text-sm text-gray-500">{description}</div>
             </div>
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">
+          <div className="text-sm text-gray-500">
             Importante: A retirada do pet deve ser combinada com o seu dono atual.
           </div>
           <div className="flex items-center justify-between  -mb-4">

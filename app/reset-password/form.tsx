@@ -7,7 +7,7 @@ export default function Form() {
     <div className="mx-auto max-w-md space-y-6 py-12">
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Redefinir Senha</h1>
-        <p className="text-gray-500 dark:text-gray-400">
+        <p className="text-gray-500">
           Insira o código de recuperação e defina uma nova senha para sua conta.
         </p>
       </div>

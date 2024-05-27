@@ -8,9 +8,7 @@ export default function Form() {
     <div className="mx-auto max-w-sm space-y-6">
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Faça login na sua conta</h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          Insira seu e-mail e senha abaixo para acessar sua conta.
-        </p>
+        <p className="text-gray-500">Insira seu e-mail e senha abaixo para acessar sua conta.</p>
       </div>
       <div className="space-y-4">
         <div className="space-y-2">
