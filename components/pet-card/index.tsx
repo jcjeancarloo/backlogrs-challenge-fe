@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { CalendarIcon, EqualIcon, HeartIcon, PawPrintIcon, WeightIcon } from 'lucide-react'
 import Image from 'next/image'
+import ConfirmAdoption from '../confirm-adoption'
 
 type PetCardProps = {
   name: string
@@ -82,9 +83,15 @@ export default function PetCard({
             </div>
           </div>
           <p className="text-gray-500 dark:text-gray-400 text-justify text-sm">{description}</p>
-          <Button className="w-full" variant="default">
-            Adotar {name}
-          </Button>
+          <ConfirmAdoption
+            age={age}
+            breed={breed}
+            gender={gender}
+            name={name}
+            weight={2}
+            img={img}
+            description={description}
+          />
         </div>
       </CardContent>
     </Card>
