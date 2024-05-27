@@ -19,6 +19,7 @@ export default function FeaturedPets() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
           <PetCard
             name="Buddy"
+            animal="dog"
             breed="Golden Retriever"
             gender="male"
             weight={10}
@@ -31,6 +32,7 @@ export default function FeaturedPets() {
           />
           <PetCard
             name="Buddy"
+            animal="dog"
             breed="Golden Retriever"
             gender="male"
             weight={10}
@@ -43,6 +45,7 @@ export default function FeaturedPets() {
           />
           <PetCard
             name="Buddy"
+            animal="dog"
             breed="Golden Retriever"
             gender="male"
             weight={10}

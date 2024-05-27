@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { PetItem } from '@/shared/types'
-import { CalendarIcon, EqualIcon, PawPrintIcon, WeightIcon } from 'lucide-react'
+import { BoneIcon, CalendarIcon, EqualIcon, PawPrintIcon, WeightIcon } from 'lucide-react'
 import Image from 'next/image'
 
 type ConfirmAdoptionProps = Omit<PetItem, 'isAvailable'>
@@ -56,6 +56,11 @@ export default function ConfirmAdoption({
             <div className="grid gap-4">
               <div className="font-medium">{name}</div>
               <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                  <BoneIcon className="w-4 h-4" />
+                  <span className="font-medium">Animal:</span>
+                  Cachorro
+                </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <PawPrintIcon className="w-4 h-4" />
                   <span className="font-medium">Raça:</span>

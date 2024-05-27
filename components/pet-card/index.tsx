@@ -1,22 +1,22 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { CalendarIcon, EqualIcon, HeartIcon, PawPrintIcon, WeightIcon } from 'lucide-react'
+import { PetItem } from '@/shared/types'
+import {
+  BoneIcon,
+  CalendarIcon,
+  EqualIcon,
+  HeartIcon,
+  PawPrintIcon,
+  WeightIcon,
+} from 'lucide-react'
 import Image from 'next/image'
 import ConfirmAdoption from '../confirm-adoption'
 
-type PetCardProps = {
-  name: string
-  img: string
-  isAvailable: boolean
-  breed: string
-  gender: 'male' | 'female'
-  age: number
-  description: string
-  weight: number
-}
+type PetCardProps = PetItem
 export default function PetCard({
   name,
+  animal,
   breed,
   gender,
   isAvailable = true,
@@ -55,6 +55,13 @@ export default function PetCard({
           <div className="grid sm:grid-cols-2 gap-4 py-4">
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
+                <BoneIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                <p className="text-sm text-gray-500 dark:text-gray-400">Animal</p>
+              </div>
+              <p>{animal}</p>
+            </div>
+            <div className="grid gap-1">
+              <div className="flex items-center gap-2">
                 <PawPrintIcon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                 <p className="text-sm text-gray-500 dark:text-gray-400">Raça</p>
               </div>
@@ -85,6 +92,7 @@ export default function PetCard({
           <p className="text-gray-500 dark:text-gray-400 text-justify text-sm">{description}</p>
           <ConfirmAdoption
             age={age}
+            animal={animal}
             breed={breed}
             gender={gender}
             name={name}
