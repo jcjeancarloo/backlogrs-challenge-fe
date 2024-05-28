@@ -24,13 +24,7 @@ export default function Hero() {
               </Link>
             </div>
           </div>
-          <Image
-            alt="Hero"
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-bottom hidden md:block md:w-full lg:order-last lg:aspect-square"
-            height="550"
-            src="/next.svg"
-            width="550"
-          />
+          <Image className="rounded-md" alt="Hero" height="80" src="/hero.png" width="550" />
         </div>
       </div>
     </section>
