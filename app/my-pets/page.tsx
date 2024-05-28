@@ -1,4 +1,5 @@
 'use client'
+import AddNewPet from '@/components/add-new-pet'
 import ListCardLoading from '@/components/list-card-loading'
 import PetList from '@/components/pet-list'
 import { Button } from '@/components/ui/button'
@@ -130,6 +131,7 @@ export default function Page() {
               </div>
             </PopoverContent>
           </Popover>
+          <AddNewPet />
         </div>
       </div>
       {isLoading ? <ListCardLoading length={3} /> : <PetList list={pets || []} />}

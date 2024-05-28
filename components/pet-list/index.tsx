@@ -21,7 +21,7 @@ export default function PetList({ list }: PetListProps) {
             age={item.age}
             description={item.description}
             photo={item.photo}
-            isAvailable
+            isAvailable={item.isAvailable}
           />
         ))
       ) : (

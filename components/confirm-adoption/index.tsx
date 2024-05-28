@@ -22,7 +22,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 
-type ConfirmAdoptionProps = Omit<PetItem, 'isAvailable'>
+type ConfirmAdoptionProps = PetItem
 
 export default function ConfirmAdoption({
   age,
@@ -32,12 +32,19 @@ export default function ConfirmAdoption({
   photo,
   name,
   weight,
+  isAvailable,
 }: ConfirmAdoptionProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full gap-x-2" variant="default">
-          <HeartIcon className="h-4 w-4" /> Adotar {name}
+        <Button className="w-full gap-x-2" variant="default" disabled={!isAvailable}>
+          {isAvailable ? (
+            <>
+              <HeartIcon className="h-4 w-4" /> Adotar {name}
+            </>
+          ) : (
+            `Indisponível`
+          )}
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-[90vw] sm:max-w-[600px]">
@@ -104,7 +111,7 @@ export default function ConfirmAdoption({
               </Label>
             </div>
             <DialogFooter className="flex flex-row items-center space-x-2">
-              <DialogClose>
+              <DialogClose asChild>
                 <Button variant="ghost">Cancelar</Button>
               </DialogClose>
               <Button type="submit">Adotar</Button>

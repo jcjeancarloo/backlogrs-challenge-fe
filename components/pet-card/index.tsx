@@ -12,7 +12,7 @@ export default function PetCard({
   animal,
   breed,
   sex,
-  isAvailable = true,
+  isAvailable,
   age,
   photo,
   weight,
@@ -87,6 +87,7 @@ export default function PetCard({
             photo={photo}
             description={description}
             userId={userId}
+            isAvailable={isAvailable}
           />
         </div>
       </CardContent>
