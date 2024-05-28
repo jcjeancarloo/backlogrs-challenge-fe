@@ -10,6 +10,9 @@ const useFetchPetsQuery = () => {
   const pets = useQuery({
     queryKey: ['list-pets'],
     queryFn: listPets,
+    staleTime: 2 * 60 * 1000, // 2 Mins,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   })
 
   return {

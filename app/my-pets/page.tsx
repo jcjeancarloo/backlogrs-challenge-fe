@@ -132,7 +132,7 @@ export default function Page() {
           </Popover>
         </div>
       </div>
-      {isLoading ? <ListCardLoading length={3} /> : <PetList list={pets} />}
+      {isLoading ? <ListCardLoading length={3} /> : <PetList list={pets || []} />}
     </div>
   )
 }
