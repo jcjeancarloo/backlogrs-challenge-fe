@@ -114,6 +114,7 @@ const useAuth = () => {
           description: 'Seja bem vindo 😃',
         })
         loginMutation.mutate({ email: data.email, password: data.password })
+        router.push('/my-pets')
       },
       onError: (error: any) => {
         toast({
