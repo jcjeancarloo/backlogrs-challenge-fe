@@ -1,5 +1,6 @@
 import { Toaster } from '@/components/ui/toaster'
 
+import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
 import QueryProvider from '@/utils/providers'
 import type { Metadata } from 'next'
@@ -24,6 +25,7 @@ export default function RootLayout({
         <QueryProvider>
           <Navbar />
           {children}
+          <Footer />
         </QueryProvider>
       </body>
       <Toaster />

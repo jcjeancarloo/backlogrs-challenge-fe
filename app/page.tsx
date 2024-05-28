@@ -10,10 +10,17 @@ export default function Home() {
   const { pets, isLoading } = useFetchPetsQuery()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Hero />
-      {isLoading ? <ListCardLoading length={3} /> : <FeaturedPets list={pets} canEdit={false} />}
-      <HowItWorks />
-    </main>
+    <div className="flex min-h-screen flex-col justify-between">
+      <main className="mb-auto">
+        <Hero />
+        <HowItWorks />
+
+        {isLoading ? (
+          <ListCardLoading length={3} />
+        ) : (
+          pets.length > 0 && <FeaturedPets list={pets} canEdit={false} />
+        )}
+      </main>
+    </div>
   )
 }

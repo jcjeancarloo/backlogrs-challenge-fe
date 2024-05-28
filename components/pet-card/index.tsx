@@ -103,17 +103,17 @@ export default function PetCard({
             />
           )}
           {canEdit && (
-            <div className="flex justify-between w-full py-2 gap-x-4">
+            <div className="flex flex-col sm:flex-row justify-between w-full py-2 gap-x-4 gap-y-2 sm:gap-y-0">
               <Button
                 variant="secondary"
-                className="bg-red-400 hover:bg-red-500 text-white w-1/2"
+                className="bg-red-400 hover:bg-red-500 text-white w-full md:w-1/2"
                 onClick={handleRemovePet}
               >
                 Excluir pet
               </Button>
               <Button
                 variant="secondary"
-                className="bg-emerald-300 hover:bg-emerald-400 text-white w-1/2"
+                className="bg-emerald-300 hover:bg-emerald-400 text-white w-full md:w-1/2"
                 onClick={handleSetToAdoption}
               >
                 {isAvailable ? 'Remover da adoção' : 'Colocar para adoção'}
