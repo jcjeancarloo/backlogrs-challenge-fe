@@ -1,10 +1,9 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import LoadingButton from '@/components/loading-button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import useAuth from '@/hooks/use-auth'
-import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 
@@ -45,15 +44,7 @@ export default function Form() {
             <span className="text-red-400 text-sm -mt-3">{errors.password.message as string}</span>
           )}
         </div>
-        <Button className="w-full" type="submit" disabled={isLoading}>
-          {isLoading ? (
-            <div className="flex items-center justify-center">
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> <span>Carregando</span>
-            </div>
-          ) : (
-            'Entrar'
-          )}
-        </Button>
+        <LoadingButton isLoading={isLoading} text="Entrar" />
         <Link className="inline-block w-full text-center text-sm underline" href="/forgot-pass">
           Esqueci minha senha
         </Link>

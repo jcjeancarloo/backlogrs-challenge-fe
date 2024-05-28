@@ -55,6 +55,7 @@ const useAuth = () => {
       console.log(error)
       toast({
         title: 'Ooops :( ',
+        variant: 'destructive',
         description: error.response.data.message,
       })
     },
@@ -73,14 +74,15 @@ const useAuth = () => {
     onSuccess: () => {
       toast({
         title: 'Nice!',
+        variant: 'success',
         description: 'E-mail enviado com sucesso',
       })
       router.push('/new-password')
     },
     onError: (error: any) => {
-      console.log(error)
       toast({
         title: 'Ooops :( ',
+        variant: 'destructive',
         description: error.response.data.message,
       })
     },
@@ -100,6 +102,7 @@ const useAuth = () => {
     onError: (error: any) => {
       toast({
         title: 'Ooops :( ',
+        variant: 'destructive',
         description: error.response.data.message,
       })
     },
