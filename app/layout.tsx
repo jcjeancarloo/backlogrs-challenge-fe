@@ -23,9 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
         </QueryProvider>
       </body>
       <Toaster />
