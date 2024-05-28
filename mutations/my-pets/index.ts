@@ -16,6 +16,10 @@ const useMyPetsMutation = () => {
 
   const deletePet = async (id: number) => await api.delete(`/pets/${id}`)
 
+  const adoptPet = async (id: string) => {
+    await api.patch(`/pets/${id}`, { userId: user.id })
+  }
+
   const createMutation = useMutation({ mutationFn: addNewPet })
 
   const create = (data: any, handleOpen: (open: boolean) => void, reset: () => void) =>
@@ -47,7 +51,26 @@ const useMyPetsMutation = () => {
         variant: 'success',
         description: 'Seu pet foi removido com sucesso',
       })
-      queryClient.invalidateQueries({ queryKey: ['benefits-list'] })
+      queryClient.invalidateQueries({ queryKey: ['list-pets'] })
+    },
+    onError: (error: any) => {
+      toast({
+        title: 'Ooops :( ',
+        variant: 'destructive',
+        description: error.response.data.message,
+      })
+    },
+  })
+
+  const adoptMutation = useMutation({
+    mutationFn: (id: string) => adoptPet(id),
+    onSuccess: () => {
+      toast({
+        title: 'Boa!',
+        variant: 'success',
+        description: 'Pet adotado com sucesso! 😃',
+      })
+      queryClient.invalidateQueries({ queryKey: ['my-pets', 'list-pets'] })
     },
     onError: (error: any) => {
       toast({
@@ -62,6 +85,8 @@ const useMyPetsMutation = () => {
     addNewPet: create,
     addNewPetLoading: createMutation.isPending,
     deletePet: deleteMutation.mutate,
+    adoptPet: adoptMutation.mutate,
+    adoptPetLoading: adoptMutation.isPending,
   }
 }
 

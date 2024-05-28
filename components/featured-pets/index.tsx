@@ -49,7 +49,7 @@ export default function FeaturedPets({ list }: { list: FeaturedPetsProps }) {
                       age={item.age}
                       description={item.description}
                       photo={item.photo}
-                      isAvailable
+                      isAvailable={item.isAvailable}
                     />
                   </div>
                 </CarouselItem>

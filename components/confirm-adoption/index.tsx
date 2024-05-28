@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
+import useMyPetsMutation from '@/mutations/my-pets'
 import { PetItem } from '@/shared/types'
 import {
   BoneIcon,
@@ -25,6 +26,7 @@ import Image from 'next/image'
 type ConfirmAdoptionProps = PetItem
 
 export default function ConfirmAdoption({
+  id,
   age,
   breed,
   description,
@@ -34,6 +36,10 @@ export default function ConfirmAdoption({
   weight,
   isAvailable,
 }: ConfirmAdoptionProps) {
+  const { adoptPet, adoptPetLoading } = useMyPetsMutation()
+
+  const handleAdopt = (id: string) => adoptPet(id)
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -54,7 +60,7 @@ export default function ConfirmAdoption({
             Revise as informações do pet e aceite os termos de adoção.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-6 py-4">
+        <form className="grid gap-6 py-4">
           <div className="grid grid-cols-[100px_1fr] items-start gap-4">
             <Image
               alt="Pet"
@@ -114,10 +120,12 @@ export default function ConfirmAdoption({
               <DialogClose asChild>
                 <Button variant="ghost">Cancelar</Button>
               </DialogClose>
-              <Button type="submit">Adotar</Button>
+              <Button type="submit" onClick={() => handleAdopt(id)}>
+                Adotar
+              </Button>
             </DialogFooter>
           </div>
-        </div>
+        </form>
       </DialogContent>
     </Dialog>
   )
