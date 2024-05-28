@@ -9,12 +9,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import useMyPetsMutation from '@/mutations/my-pets'
 import useFetchPetsQuery from '@/queries/list-pets'
 import { PetItem } from '@/shared/types'
 import useUserStore from '@/store/user'
 
 export default function Page() {
   const { myPets, myPetsIsLoading } = useFetchPetsQuery()
+  const { setToAdoption, deletePet } = useMyPetsMutation()
   const { user } = useUserStore()
 
   return (
@@ -32,39 +34,47 @@ export default function Page() {
         <ListCardLoading length={3} />
       ) : (
         <div className="flex mt-4 w-full justify-center">
-          <Carousel
-            className="w-[70vw] sm:w-full"
-            opts={{
-              align: 'start',
-              loop: false,
-            }}
-          >
-            <CarouselContent>
-              {myPets.slice(0, 10).map((item: PetItem) => (
-                <CarouselItem key={item.id} className="pl-4  md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <PetCard
-                      id={item.id}
-                      userId={item.userId}
-                      name={item.name}
-                      animal={item.animal}
-                      breed={item.breed}
-                      sex={item.sex}
-                      weight={item.weight}
-                      age={item.age}
-                      description={item.description}
-                      photo={item.photo}
-                      isAvailable={item.isAvailable}
-                      canEdit={false}
-                      authUserId={user.id}
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          {myPets.length > 0 ? (
+            <Carousel
+              className="w-[70vw] sm:w-full"
+              opts={{
+                align: 'start',
+                loop: false,
+              }}
+            >
+              <CarouselContent>
+                {myPets.map((item: PetItem) => (
+                  <CarouselItem key={item.id} className="pl-4  md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <PetCard
+                        id={item.id}
+                        userId={item.userId}
+                        name={item.name}
+                        animal={item.animal}
+                        breed={item.breed}
+                        sex={item.sex}
+                        weight={item.weight}
+                        age={item.age}
+                        description={item.description}
+                        photo={item.photo}
+                        isAvailable={item.isAvailable}
+                        canEdit={true}
+                        authUserId={user.id}
+                        handleSetToAdoption={() =>
+                          setToAdoption({ id: item.id, option: !item.isAvailable })
+                        }
+                        handleRemovePet={() => deletePet(item.id)}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          ) : (
+            <span>Nenhum pet encontrado</span>
+          )}
         </div>
       )}
     </div>

@@ -46,7 +46,10 @@ export default function ConfirmAdoption({
   const { adoptPet, adoptPetLoading } = useMyPetsMutation()
   const { isAuthenticated } = useAuth()
 
-  const handleAdopt = (id: string) => adoptPet(id)
+  const handleAdopt = (e: React.FormEvent, id: string) => {
+    e.preventDefault()
+    adoptPet(id)
+  }
 
   const router = useRouter()
 
@@ -143,7 +146,7 @@ export default function ConfirmAdoption({
                   Cancelar
                 </Button>
               </DialogClose>
-              <Button type="submit" onClick={() => handleAdopt(id)}>
+              <Button type="submit" onClick={(e) => handleAdopt(e, id)}>
                 Adotar
               </Button>
             </DialogFooter>

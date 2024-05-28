@@ -19,7 +19,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { Switch } from '@/components/ui/switch'
 
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -221,10 +220,6 @@ export default function AddNewPet() {
             />
           </div>
           {errors.description && <ErrorMessage message={errors.description.message as string} />}
-          <div className="flex items-center space-x-2  justify-end py-2">
-            <Label htmlFor="isAvailable">Disponível para adoção</Label>
-            <Switch id="isAvailable" onCheckedChange={(e) => setValue('isAvailable', e)} />
-          </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="ghost" onClick={() => handleDialog(false)} type="button">
