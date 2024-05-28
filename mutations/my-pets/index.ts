@@ -1,15 +1,17 @@
 import { toast } from '@/components/ui/use-toast'
 import api from '@/lib/axios'
+import useUserStore from '@/store/user'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const useMyPetsMutation = () => {
   const queryClient = useQueryClient()
+  const { user } = useUserStore()
 
   // API CALLS
   const addNewPet = async (data: any) => {
     let isAvailable = data.isAvailable || false
     data.isAvailable = isAvailable
-    await api.post('/pets', { ...data, userId: 'fd082382-365b-4ca8-a52c-3665008a02e5' })
+    await api.post('/pets', { ...data, userId: user.id })
   }
 
   const deletePet = async (id: number) => await api.delete(`/pets/${id}`)

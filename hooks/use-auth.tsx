@@ -51,6 +51,7 @@ const useAuth = () => {
     mutationFn: auth,
     onSuccess: (data: any) => {
       logged({
+        id: data.id,
         name: data.name,
         email: data.email,
       })

@@ -46,8 +46,7 @@ export default function AddNewPet() {
     reset,
     clearErrors,
     setValue,
-    getValues,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm({ resolver: zodResolver(validationSchema), mode: 'all' })
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
