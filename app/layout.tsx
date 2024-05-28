@@ -1,5 +1,6 @@
 import { Toaster } from '@/components/ui/toaster'
 
+import Navbar from '@/components/navbar'
 import QueryProvider from '@/utils/providers'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -20,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <Navbar />
+          {children}
+        </QueryProvider>
       </body>
       <Toaster />
     </html>

@@ -11,3 +11,5 @@ export type PetItem = {
   description: string
   weight: number
 }
+
+export type ModalType = 'login' | 'signup' | 'forgot'

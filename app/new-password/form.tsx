@@ -23,7 +23,7 @@ export default function Form() {
       </div>
       <form className="space-y-4" onSubmit={handleSubmit(handleNewPass)}>
         <div className="space-y-2">
-          <Label htmlFor="email">Código de Recuperação</Label>
+          <Label htmlFor="email">E-mail</Label>
           <Input
             id="email"
             placeholder="Digite o email"

@@ -4,8 +4,10 @@ import LoadingButton from '@/components/loading-button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import useAuth from '@/hooks/use-auth'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
+import validationSchema from './validationSchema'
 
 export default function Form() {
   const { login, isLoading } = useAuth()
@@ -15,7 +17,7 @@ export default function Form() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm({ resolver: zodResolver(validationSchema), mode: 'all' })
 
   return (
     <form className="mx-auto max-w-sm space-y-6" onSubmit={handleSubmit(handleAuth)}>

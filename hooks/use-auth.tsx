@@ -1,4 +1,3 @@
-'use client'
 import { useToast } from '@/components/ui/use-toast'
 import api from '@/lib/axios'
 import useUserStore from '@/store/user'
@@ -8,11 +7,24 @@ import { useRouter } from 'next/navigation'
 
 import Cookies from 'js-cookie'
 
+type ResetPassword = {
+  email: string
+  codeValidation: string
+  password: string
+}
+
+type Signup = {
+  name: string
+  email: string
+  password: string
+}
+
 const useAuth = () => {
   const { logged } = useUserStore()
   const router = useRouter()
   const { toast } = useToast()
 
+  // API CALLS
   const auth = async ({ email, password }: { email: string; password: string }) => {
     const { data } = await api.post('/auth', { email, password })
     return data
@@ -23,15 +35,7 @@ const useAuth = () => {
     return data
   }
 
-  const resetPassword = async ({
-    email,
-    codeValidation,
-    password,
-  }: {
-    email: string
-    codeValidation: string
-    password: string
-  }) => {
+  const resetPassword = async ({ email, codeValidation, password }: ResetPassword) => {
     const { data } = await api.post('/auth/set-new-password', {
       email,
       codeValidation,
@@ -40,19 +44,20 @@ const useAuth = () => {
     return data
   }
 
+  const signup = async (data: any) => await api.post('/users', data)
+
+  // MUTATIONS
   const loginMutation = useMutation({
     mutationFn: auth,
     onSuccess: (data: any) => {
       logged({
         name: data.name,
         email: data.email,
-        avatar: data.avatar,
       })
       Cookies.set('token', data.access_token)
-      // router.push('/dashboard')
+      router.back()
     },
     onError: (error: any) => {
-      console.log(error)
       toast({
         title: 'Ooops :( ',
         variant: 'destructive',
@@ -60,14 +65,6 @@ const useAuth = () => {
       })
     },
   })
-
-  const login = (credentials: { email: string; password: string }) =>
-    loginMutation.mutateAsync(credentials)
-
-  const logout = () => {
-    useUserStore.persist.clearStorage()
-    router.push('/')
-  }
 
   const forgotMutation = useMutation({
     mutationFn: forgotPassword,
@@ -88,8 +85,6 @@ const useAuth = () => {
     },
   })
 
-  const forgot = (email: string) => forgotMutation.mutateAsync(email)
-
   const newPassMutation = useMutation({
     mutationFn: resetPassword,
     onSuccess: () => {
@@ -108,17 +103,46 @@ const useAuth = () => {
     },
   })
 
-  const newPass = (data: { email: string; codeValidation: string; password: string }) =>
-    newPassMutation.mutateAsync(data)
+  const signUpMutation = useMutation({ mutationFn: signup })
+
+  const signUp = (data: Signup) =>
+    signUpMutation.mutate(data, {
+      onSuccess: () => {
+        toast({
+          title: 'Boa!',
+          variant: 'success',
+          description: 'Seja bem vindo 😃',
+        })
+        loginMutation.mutate({ email: data.email, password: data.password })
+      },
+      onError: (error: any) => {
+        toast({
+          title: 'Ooops :( ',
+          variant: 'destructive',
+          description: error.response.data.message,
+        })
+      },
+    })
+
+  const logout = () => {
+    useUserStore.persist.clearStorage()
+    Cookies.remove('token')
+    router.push('/')
+  }
+
+  const isAuthenticated = Cookies.get('token')
 
   return {
-    login,
-    logout,
+    login: (credentials: { email: string; password: string }) => loginMutation.mutate(credentials),
+    forgot: (email: string) => forgotMutation.mutate(email),
+    newPass: (data: ResetPassword) => newPassMutation.mutate(data),
+    signup: signUp,
     isLoading: loginMutation.isPending,
-    forgot,
     forgotLoading: forgotMutation.isPending,
-    newPass,
     newPassLoading: newPassMutation.isPending,
+    signupLoading: signUpMutation.isPending,
+    logout,
+    isAuthenticated,
   }
 }
 
