@@ -9,7 +9,9 @@ type User = {
 
 type UserStore = {
   user: User
+  isAuthenticated: boolean
   logged: (user: User) => void
+  setAuthenticated: (isAuthenticated: boolean) => void
 }
 
 const useUserStore = create(
@@ -20,7 +22,9 @@ const useUserStore = create(
         name: '',
         email: '',
       },
+      isAuthenticated: false,
       logged: (user) => set(() => ({ user })),
+      setAuthenticated: (isAuthenticated: boolean) => set(() => ({ isAuthenticated })),
     }),
     {
       name: 'app',

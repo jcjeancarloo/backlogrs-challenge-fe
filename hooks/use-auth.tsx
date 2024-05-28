@@ -20,7 +20,7 @@ type Signup = {
 }
 
 const useAuth = () => {
-  const { logged } = useUserStore()
+  const { logged, setAuthenticated, isAuthenticated } = useUserStore()
   const router = useRouter()
   const { toast } = useToast()
 
@@ -55,7 +55,9 @@ const useAuth = () => {
         name: data.name,
         email: data.email,
       })
+
       Cookies.set('token', data.access_token)
+      setAuthenticated(!!data.access_token)
       router.back()
     },
     onError: (error: any) => {
@@ -129,6 +131,7 @@ const useAuth = () => {
   const logout = () => {
     useUserStore.persist.clearStorage()
     Cookies.remove('token')
+    setAuthenticated(false)
     router.push('/')
   }
 
@@ -142,7 +145,7 @@ const useAuth = () => {
     newPassLoading: newPassMutation.isPending,
     signupLoading: signUpMutation.isPending,
     logout,
-    isAuthenticated: !!Cookies.get('token'),
+    isAuthenticated,
   }
 }
 

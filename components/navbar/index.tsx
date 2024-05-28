@@ -10,6 +10,8 @@ export default function Navbar() {
   const { isAuthenticated, logout } = useAuth()
   const { user } = useUserStore()
 
+  console.log({ isAuthenticated })
+
   return (
     <header className="container flex h-16 items-center justify-between px-4 md:px-24">
       <Link className="flex items-center gap-2" href="/">
