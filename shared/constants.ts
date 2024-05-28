@@ -21,6 +21,7 @@ export const APP_ROUTES = {
     signup: '/signup',
     auth: '/auth',
     forgot: '/forgot-pass',
+    find: '/find',
     newPassword: 'new-password',
   },
 }
