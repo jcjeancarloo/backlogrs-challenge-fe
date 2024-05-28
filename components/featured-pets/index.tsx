@@ -31,9 +31,9 @@ export default function FeaturedPets({ list, canEdit }: FeaturedPetsProps) {
           </div>
           <Link href="/find">Ver Todos os Pets</Link>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 ml-10 sm:ml-0">
           <Carousel
-            className="w-[60vw] sm:w-full"
+            className="w-[73vw] sm:w-full"
             opts={{
               align: 'start',
               loop: true,
