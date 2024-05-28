@@ -20,7 +20,7 @@ export default function PetCard({
   userId,
 }: PetCardProps) {
   return (
-    <Card className="max-w-md w-full">
+    <Card className="md:max-w-md w-full">
       <CardContent className="grid gap-4">
         <div className="relative group mt-4">
           <Image
@@ -38,7 +38,7 @@ export default function PetCard({
               {isAvailable ? 'Disponível' : 'Indisponível'}
             </Badge>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4 py-4">
+          <div className="grid grid-cols-2 gap-4 py-4">
             <div className="grid gap-1">
               <div className="flex items-center gap-2">
                 <BoneIcon className="w-4 h-4 text-gray-500" />

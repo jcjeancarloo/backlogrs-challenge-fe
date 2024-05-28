@@ -1,12 +1,22 @@
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+import { PetItem } from '@/shared/types'
 import Link from 'next/link'
 import PetCard from '../pet-card'
 
-export default function FeaturedPets() {
+type FeaturedPetsProps = PetItem[]
+
+export default function FeaturedPets({ list }: { list: FeaturedPetsProps }) {
   return (
     <section className="py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row md:gap-6">
-          <div className="space-y-2">
+          <div className="space-y-2 text-center md:text-left">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Encontre seu pet
             </h2>
@@ -14,48 +24,40 @@ export default function FeaturedPets() {
               Descubra seu novo amigo peludo.
             </p>
           </div>
-          <Link href="#">Ver Todos os Pets</Link>
+          <Link href="/find">Ver Todos os Pets</Link>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
-          <PetCard
-            name="Buddy"
-            animal="dog"
-            breed="Golden Retriever"
-            sex="male"
-            weight={10}
-            age={3}
-            description="Buddy é um Golden Retriever cheio de energia e amor para dar. Ele adora brincar e fazer
-            novas amizades. Seu temperamento amigável o torna o companheiro perfeito para famílias e
-            crianças."
-            img=""
-            isAvailable
-          />
-          <PetCard
-            name="Buddy"
-            animal="dog"
-            breed="Golden Retriever"
-            sex="male"
-            weight={10}
-            age={3}
-            description="Buddy é um Golden Retriever cheio de energia e amor para dar. Ele adora brincar e fazer
-            novas amizades. Seu temperamento amigável o torna o companheiro perfeito para famílias e
-            crianças."
-            img=""
-            isAvailable
-          />
-          <PetCard
-            name="Buddy"
-            animal="dog"
-            breed="Golden Retriever"
-            sex="male"
-            weight={10}
-            age={3}
-            description="Buddy é um Golden Retriever cheio de energia e amor para dar. Ele adora brincar e fazer
-            novas amizades. Seu temperamento amigável o torna o companheiro perfeito para famílias e
-            crianças."
-            img=""
-            isAvailable
-          />
+        <div className="mt-4">
+          <Carousel
+            className="w-[60vw] sm:w-full"
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {list.slice(0, 10).map((item: PetItem) => (
+                <CarouselItem key={item.id} className="pl-4  md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <PetCard
+                      id={item.id}
+                      userId={item.userId}
+                      name={item.name}
+                      animal={item.animal}
+                      breed={item.breed}
+                      sex={item.sex}
+                      weight={item.weight}
+                      age={item.age}
+                      description={item.description}
+                      photo={item.photo}
+                      isAvailable
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </section>

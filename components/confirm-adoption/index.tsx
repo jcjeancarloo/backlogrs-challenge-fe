@@ -12,7 +12,14 @@ import {
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
 import { PetItem } from '@/shared/types'
-import { BoneIcon, CalendarIcon, EqualIcon, PawPrintIcon, WeightIcon } from 'lucide-react'
+import {
+  BoneIcon,
+  CalendarIcon,
+  EqualIcon,
+  HeartIcon,
+  PawPrintIcon,
+  WeightIcon,
+} from 'lucide-react'
 import Image from 'next/image'
 
 type ConfirmAdoptionProps = Omit<PetItem, 'isAvailable'>
@@ -29,11 +36,11 @@ export default function ConfirmAdoption({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full" variant="default">
-          Adotar Pet
+        <Button className="w-full gap-x-2" variant="default">
+          <HeartIcon className="h-4 w-4" /> Adotar {name}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="max-w-[90vw] sm:max-w-[600px]">
         <DialogHeader>
           <DialogTitle>Confirmar Adoção</DialogTitle>
           <DialogDescription>
@@ -96,7 +103,7 @@ export default function ConfirmAdoption({
                 <span className="underline"> termos de adoção </span>
               </Label>
             </div>
-            <DialogFooter className="flex items-center space-x-2">
+            <DialogFooter className="flex flex-row items-center space-x-2">
               <DialogClose>
                 <Button variant="ghost">Cancelar</Button>
               </DialogClose>
