@@ -6,6 +6,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 import { PetItem } from '@/shared/types'
+import useUserStore from '@/store/user'
 import Link from 'next/link'
 import PetCard from '../pet-card'
 
@@ -15,6 +16,7 @@ type FeaturedPetsProps = {
 }
 
 export default function FeaturedPets({ list, canEdit }: FeaturedPetsProps) {
+  const { user } = useUserStore()
   return (
     <section className="py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6">
@@ -54,6 +56,7 @@ export default function FeaturedPets({ list, canEdit }: FeaturedPetsProps) {
                       photo={item.photo}
                       isAvailable={item.isAvailable}
                       canEdit={canEdit}
+                      authUserId={user.id}
                     />
                   </div>
                 </CarouselItem>

@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
+import useAuth from '@/hooks/use-auth'
 import useMyPetsMutation from '@/mutations/my-pets'
 import { PetItem } from '@/shared/types'
 import {
@@ -22,8 +23,12 @@ import {
   WeightIcon,
 } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
-type ConfirmAdoptionProps = PetItem
+type ConfirmAdoptionProps = PetItem & {
+  authUserId: string
+}
 
 export default function ConfirmAdoption({
   id,
@@ -35,19 +40,35 @@ export default function ConfirmAdoption({
   name,
   weight,
   isAvailable,
+  userId,
+  authUserId,
 }: ConfirmAdoptionProps) {
   const { adoptPet, adoptPetLoading } = useMyPetsMutation()
+  const { isAuthenticated } = useAuth()
 
   const handleAdopt = (id: string) => adoptPet(id)
 
+  const router = useRouter()
+
+  const [openModal, setOpenModal] = useState<boolean>(false)
+
+  const isOwner = authUserId === userId
+
   return (
-    <Dialog>
+    <Dialog open={isAuthenticated && openModal}>
       <DialogTrigger asChild>
-        <Button className="w-full gap-x-2" variant="default" disabled={!isAvailable}>
-          {isAvailable ? (
+        <Button
+          className="w-full gap-x-2"
+          variant="default"
+          disabled={!isAvailable || isOwner}
+          onClick={() => (isAuthenticated ? setOpenModal(true) : router.push('/auth'))}
+        >
+          {isAvailable && !isOwner ? (
             <>
               <HeartIcon className="h-4 w-4" /> Adotar {name}
             </>
+          ) : isOwner ? (
+            `Este pet já é seu :)`
           ) : (
             `Indisponível`
           )}
@@ -118,7 +139,9 @@ export default function ConfirmAdoption({
             </div>
             <DialogFooter className="flex flex-row items-center space-x-2">
               <DialogClose asChild>
-                <Button variant="ghost">Cancelar</Button>
+                <Button variant="ghost" onClick={() => setOpenModal(false)}>
+                  Cancelar
+                </Button>
               </DialogClose>
               <Button type="submit" onClick={() => handleAdopt(id)}>
                 Adotar

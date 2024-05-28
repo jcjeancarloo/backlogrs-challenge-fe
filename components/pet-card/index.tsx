@@ -7,6 +7,7 @@ import ConfirmAdoption from '../confirm-adoption'
 import { Button } from '../ui/button'
 
 type PetCardProps = PetItem & {
+  authUserId: string
   canEdit: boolean
   handleSetToAdoption?: () => void
   handleRemovePet?: () => void
@@ -23,6 +24,7 @@ export default function PetCard({
   weight,
   description,
   userId,
+  authUserId,
   canEdit,
   handleSetToAdoption,
   handleRemovePet,
@@ -97,6 +99,7 @@ export default function PetCard({
               description={description}
               userId={userId}
               isAvailable={isAvailable}
+              authUserId={authUserId}
             />
           )}
           {canEdit && (

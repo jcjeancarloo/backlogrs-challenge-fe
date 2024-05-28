@@ -132,8 +132,6 @@ const useAuth = () => {
     router.push('/')
   }
 
-  const isAuthenticated = Cookies.get('token')
-
   return {
     login: (credentials: { email: string; password: string }) => loginMutation.mutate(credentials),
     forgot: (email: string) => forgotMutation.mutate(email),
@@ -144,7 +142,7 @@ const useAuth = () => {
     newPassLoading: newPassMutation.isPending,
     signupLoading: signUpMutation.isPending,
     logout,
-    isAuthenticated,
+    isAuthenticated: !!Cookies.get('token'),
   }
 }
 
