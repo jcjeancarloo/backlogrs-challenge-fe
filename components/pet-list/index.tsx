@@ -1,10 +1,13 @@
+import useMyPetsMutation from '@/mutations/my-pets'
 import { PetItem } from '@/shared/types'
 import PetCard from '../pet-card'
 
 type PetListProps = {
   list: PetItem[]
+  canEdit: boolean
 }
-export default function PetList({ list }: PetListProps) {
+export default function PetList({ list, canEdit }: PetListProps) {
+  const { setToAdoption, deletePet } = useMyPetsMutation()
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
       {list.length > 0 ? (
@@ -22,6 +25,9 @@ export default function PetList({ list }: PetListProps) {
             description={item.description}
             photo={item.photo}
             isAvailable={item.isAvailable}
+            canEdit={canEdit}
+            handleSetToAdoption={() => setToAdoption({ id: item.id, option: !item.isAvailable })}
+            handleRemovePet={() => deletePet(item.id)}
           />
         ))
       ) : (

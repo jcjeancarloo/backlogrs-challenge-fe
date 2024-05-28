@@ -20,7 +20,7 @@ export default function Page() {
           <AddNewPet />
         </div>
       </div>
-      {myPetsIsLoading ? <ListCardLoading length={3} /> : <PetList list={myPets || []} />}
+      {myPetsIsLoading ? <ListCardLoading length={3} /> : <PetList list={myPets || []} canEdit />}
     </div>
   )
 }

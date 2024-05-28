@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Hero />
-      {isLoading ? <ListCardLoading length={3} /> : <FeaturedPets list={pets} />}
+      {isLoading ? <ListCardLoading length={3} /> : <FeaturedPets list={pets} canEdit={false} />}
       <HowItWorks />
     </main>
   )

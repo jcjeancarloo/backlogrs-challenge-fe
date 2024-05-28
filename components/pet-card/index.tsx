@@ -4,8 +4,13 @@ import { PetItem } from '@/shared/types'
 import { BoneIcon, CalendarIcon, EqualIcon, PawPrintIcon, WeightIcon } from 'lucide-react'
 import Image from 'next/image'
 import ConfirmAdoption from '../confirm-adoption'
+import { Button } from '../ui/button'
 
-type PetCardProps = PetItem
+type PetCardProps = PetItem & {
+  canEdit: boolean
+  handleSetToAdoption?: () => void
+  handleRemovePet?: () => void
+}
 export default function PetCard({
   id,
   name,
@@ -18,6 +23,9 @@ export default function PetCard({
   weight,
   description,
   userId,
+  canEdit,
+  handleSetToAdoption,
+  handleRemovePet,
 }: PetCardProps) {
   return (
     <Card className="md:max-w-md w-full">
@@ -89,6 +97,24 @@ export default function PetCard({
             userId={userId}
             isAvailable={isAvailable}
           />
+          {canEdit && (
+            <div className="flex justify-between w-full py-2 gap-x-4">
+              <Button
+                variant="secondary"
+                className="bg-red-400 hover:bg-red-500 text-white w-1/2"
+                onClick={handleRemovePet}
+              >
+                Excluir pet
+              </Button>
+              <Button
+                variant="secondary"
+                className="bg-emerald-300 hover:bg-emerald-400 text-white w-1/2"
+                onClick={handleSetToAdoption}
+              >
+                {isAvailable ? 'Remover da adoção' : 'Colocar para adoção'}
+              </Button>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

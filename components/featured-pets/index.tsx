@@ -9,9 +9,12 @@ import { PetItem } from '@/shared/types'
 import Link from 'next/link'
 import PetCard from '../pet-card'
 
-type FeaturedPetsProps = PetItem[]
+type FeaturedPetsProps = {
+  canEdit: boolean
+  list: PetItem[]
+}
 
-export default function FeaturedPets({ list }: { list: FeaturedPetsProps }) {
+export default function FeaturedPets({ list, canEdit }: FeaturedPetsProps) {
   return (
     <section className="py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6">
@@ -50,6 +53,7 @@ export default function FeaturedPets({ list }: { list: FeaturedPetsProps }) {
                       description={item.description}
                       photo={item.photo}
                       isAvailable={item.isAvailable}
+                      canEdit={canEdit}
                     />
                   </div>
                 </CarouselItem>
