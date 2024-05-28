@@ -6,7 +6,7 @@ import useFetchPetsQuery from '@/queries/list-pets'
 import useUserStore from '@/store/user'
 
 export default function Page() {
-  const { pets, isLoading } = useFetchPetsQuery()
+  const { myPets, myPetsIsLoading } = useFetchPetsQuery()
   const { user } = useUserStore()
 
   return (
@@ -20,7 +20,7 @@ export default function Page() {
           <AddNewPet />
         </div>
       </div>
-      {isLoading ? <ListCardLoading length={3} /> : <PetList list={pets || []} />}
+      {myPetsIsLoading ? <ListCardLoading length={3} /> : <PetList list={myPets || []} />}
     </div>
   )
 }
