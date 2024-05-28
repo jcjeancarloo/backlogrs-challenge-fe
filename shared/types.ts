@@ -1,7 +1,9 @@
 export type PetItem = {
+  id: string
+  userId: string
   name: string
   animal: 'dog' | 'cat'
-  img: string
+  photo: string
   isAvailable: boolean
   breed: string
   sex: 'male' | 'female'

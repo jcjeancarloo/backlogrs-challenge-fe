@@ -1,3 +1,5 @@
+'use client'
+import ListCardLoading from '@/components/list-card-loading'
 import PetList from '@/components/pet-list'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,9 +13,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import useFetchPetsQuery from '@/queries/list-pets'
 import { FilterIcon } from 'lucide-react'
 
 export default function Page() {
+  const { pets, isLoading } = useFetchPetsQuery()
+
   return (
     <div className="w-full max-w-6xl mx-auto py-12 px-4 md:px-6">
       <div className="flex items-center justify-between mb-8">
@@ -127,7 +132,7 @@ export default function Page() {
           </Popover>
         </div>
       </div>
-      <PetList />
+      {isLoading ? <ListCardLoading length={3} /> : <PetList list={pets} />}
     </div>
   )
 }

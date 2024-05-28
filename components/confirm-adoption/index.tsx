@@ -22,7 +22,7 @@ export default function ConfirmAdoption({
   breed,
   description,
   sex,
-  img,
+  photo,
   name,
   weight,
 }: ConfirmAdoptionProps) {
@@ -46,7 +46,7 @@ export default function ConfirmAdoption({
               alt="Pet"
               className="rounded-lg object-cover"
               height={100}
-              src={img}
+              src={photo}
               style={{
                 aspectRatio: '100/100',
                 objectFit: 'cover',
