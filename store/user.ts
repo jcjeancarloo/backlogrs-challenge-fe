@@ -12,19 +12,23 @@ type UserStore = {
   isAuthenticated: boolean
   logged: (user: User) => void
   setAuthenticated: (isAuthenticated: boolean) => void
+  reset: () => void
+}
+
+const INITIAL_STATE = {
+  id: '',
+  name: '',
+  email: '',
 }
 
 const useUserStore = create(
   persist<UserStore>(
     (set) => ({
-      user: {
-        id: '',
-        name: '',
-        email: '',
-      },
+      user: INITIAL_STATE,
       isAuthenticated: false,
       logged: (user) => set(() => ({ user })),
       setAuthenticated: (isAuthenticated: boolean) => set(() => ({ isAuthenticated })),
+      reset: () => set(() => ({ user: INITIAL_STATE })),
     }),
     {
       name: 'app',

@@ -20,7 +20,7 @@ type Signup = {
 }
 
 const useAuth = () => {
-  const { logged, setAuthenticated, isAuthenticated } = useUserStore()
+  const { logged, setAuthenticated, isAuthenticated, reset } = useUserStore()
   const router = useRouter()
   const { toast } = useToast()
 
@@ -129,7 +129,7 @@ const useAuth = () => {
     })
 
   const logout = () => {
-    useUserStore.persist.clearStorage()
+    reset()
     Cookies.remove('token')
     setAuthenticated(false)
     router.push('/')
