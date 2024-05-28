@@ -22,6 +22,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <title>PetAdote - Adote um amigo peludo</title>
+      </head>
       <body className={inter.className}>
         <QueryProvider>
           <div className="flex flex-col min-h-screen">
