@@ -71,7 +71,7 @@ export default function AddNewPet() {
   return (
     <Dialog open={isOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="gap-x-2" onClick={() => handleDialog(true)}>
+        <Button variant="default" className="gap-x-2" onClick={() => handleDialog(true)}>
           <PlusIcon className="h-4 w-4" />
           Adicionar Pet
         </Button>

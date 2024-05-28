@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="w-full md:py-0 py-8">
+    <section className="w-full md:py-0 py-8 bg-orange-100">
       <div className="container px-4 md:px-24">
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:gap-12">
           <div className="flex flex-col justify-center space-y-4">
@@ -17,7 +17,7 @@ export default function Hero() {
             </div>
             <div className="grid md:grid-cols-2 gap-4 max-w-[500px]">
               <Link
-                className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-10 items-center justify-center rounded-md  bg-rose-600 hover:bg-rose-500 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
                 href="/find"
               >
                 Adotar um pet

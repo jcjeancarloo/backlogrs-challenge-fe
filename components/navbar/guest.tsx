@@ -10,7 +10,7 @@ const Guest = () => {
         Entrar
       </Link>
       <Link
-        className="rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-100 hover:text-gray-900 transition"
+        className="rounded-md border border-gray-200 bg-rose-600 hover:bg-rose-500 px-4 py-2 text-sm font-medium shadow-sm text-white transition"
         href="/signup"
       >
         Criar conta
