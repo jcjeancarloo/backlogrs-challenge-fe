@@ -84,19 +84,21 @@ export default function PetCard({
             </div>
           </div>
           <p className="text-gray-500 text-justify text-sm mb-4">{description}</p>
-          <ConfirmAdoption
-            id={id}
-            age={age}
-            animal={animal}
-            breed={breed}
-            sex={sex}
-            name={name}
-            weight={2}
-            photo={photo}
-            description={description}
-            userId={userId}
-            isAvailable={isAvailable}
-          />
+          {!canEdit && (
+            <ConfirmAdoption
+              id={id}
+              age={age}
+              animal={animal}
+              breed={breed}
+              sex={sex}
+              name={name}
+              weight={2}
+              photo={photo}
+              description={description}
+              userId={userId}
+              isAvailable={isAvailable}
+            />
+          )}
           {canEdit && (
             <div className="flex justify-between w-full py-2 gap-x-4">
               <Button
