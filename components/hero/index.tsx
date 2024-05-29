@@ -23,6 +23,13 @@ export default function Hero() {
               >
                 Adotar um pet
               </Link>
+              <Link
+                className="inline-flex h-10 items-center justify-center rounded-md  bg-white hover:bg-gray-200 px-8 text-sm font-medium  shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+                href="/my-pets"
+                id="cta-set-adoption"
+              >
+                Colocar para adoção
+              </Link>
             </div>
           </div>
           <Image className="rounded-md" alt="Hero" height="80" src="/hero.png" width="550" />

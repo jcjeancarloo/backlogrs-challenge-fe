@@ -67,7 +67,12 @@ export default function AddNewPet() {
   return (
     <Dialog open={isOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" className="gap-x-2" onClick={() => handleDialog(true)}>
+        <Button
+          variant="default"
+          className="gap-x-2"
+          onClick={() => handleDialog(true)}
+          id="add-pet-btn"
+        >
           <PlusIcon className="h-4 w-4" />
           Adicionar Pet
         </Button>
@@ -79,7 +84,7 @@ export default function AddNewPet() {
             Preencha o formulário para adicionar um novo pet à sua conta.
           </DialogDescription>
         </DialogHeader>
-        <form className="grid gap-4 py-4" onSubmit={handleSubmit(handleNewPet)}>
+        <form className="grid gap-4 py-4" onSubmit={handleSubmit(handleNewPet)} id="new-pet-form">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right" htmlFor="name">
               Nome
@@ -127,12 +132,12 @@ export default function AddNewPet() {
             <div className="col-span-3">
               <Select onValueChange={(e) => setValue('breed', e)}>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Selecione a raça" />
+                  <SelectValue placeholder="Selecione a raça" id="breed-select" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     {currentBreeds.map((item, index) => (
-                      <SelectItem key={index} value={item}>
+                      <SelectItem key={index} value={item} id="breed-item">
                         {item}
                       </SelectItem>
                     ))}

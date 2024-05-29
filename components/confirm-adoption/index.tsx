@@ -65,10 +65,11 @@ export default function ConfirmAdoption({
           variant="default"
           disabled={!isAvailable || isOwner}
           onClick={() => (isAuthenticated ? setOpenModal(true) : router.push('/auth'))}
+          id="adoption-btn"
         >
           {isAvailable && !isOwner ? (
             <>
-              <HeartIcon className="h-4 w-4" /> Adotar {name}
+              <HeartIcon className="h-4 w-4" id="heart-adopt" /> Adotar {name}
             </>
           ) : isOwner ? (
             `Este pet já é seu :)`
@@ -146,7 +147,7 @@ export default function ConfirmAdoption({
                   Cancelar
                 </Button>
               </DialogClose>
-              <Button type="submit" onClick={(e) => handleAdopt(e, id)}>
+              <Button type="submit" onClick={(e) => handleAdopt(e, id)} id="confirm-adoption">
                 Adotar
               </Button>
             </DialogFooter>
