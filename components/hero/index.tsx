@@ -19,6 +19,7 @@ export default function Hero() {
               <Link
                 className="inline-flex h-10 items-center justify-center rounded-md  bg-rose-600 hover:bg-rose-500 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
                 href="/find"
+                id="cta-hero"
               >
                 Adotar um pet
               </Link>

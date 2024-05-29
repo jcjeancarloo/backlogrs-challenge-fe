@@ -7,7 +7,7 @@ type LoadingButtonProps = {
 }
 export default function LoadingButton({ isLoading, text }: LoadingButtonProps) {
   return (
-    <Button className="w-full" type="submit" disabled={isLoading}>
+    <Button className="w-full" type="submit" disabled={isLoading} id="submit-btn">
       {isLoading ? (
         <div className="flex items-center justify-center">
           <Loader2 className="mr-2 h-4 w-4 animate-spin" /> <span>Carregando</span>
