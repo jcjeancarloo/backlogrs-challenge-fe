@@ -58,7 +58,7 @@ const useAuth = () => {
 
       Cookies.set('token', data.access_token)
       setAuthenticated(!!data.access_token)
-      router.back()
+      router.push('/my-pets')
     },
     onError: (error: any) => {
       toast({

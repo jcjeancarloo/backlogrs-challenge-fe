@@ -2,6 +2,7 @@ import { toast } from '@/components/ui/use-toast'
 import api from '@/lib/axios'
 import useUserStore from '@/store/user'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import FormData from 'form-data'
 import { useRouter } from 'next/navigation'
 
 const useMyPetsMutation = () => {
@@ -10,7 +11,15 @@ const useMyPetsMutation = () => {
   const router = useRouter()
 
   // API CALLS
-  const addNewPet = async (data: any) => await api.post('/pets', { ...data, userId: user.id })
+  const addNewPet = async (data: any) => {
+    const formData = new FormData()
+    formData.append('file', data.photo[0])
+
+    const createdPet = await api.post('/pets', { ...data, photo: 'temp-name' })
+    const uploadedImage = await api.post('/upload-img', formData)
+    return await api.put(`pets/${createdPet.data.id}`, { photo: uploadedImage.data.imgUrl })
+  }
+
   const deletePet = async (id: string) => await api.delete(`/pets/${id}`)
   const adoptPet = async (id: string) => await api.patch(`/pets/${id}`, { userId: user.id })
   const setToAdoption = async ({ id, option }: { id: string; option: boolean }) =>

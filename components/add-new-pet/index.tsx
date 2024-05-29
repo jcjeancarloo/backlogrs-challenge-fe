@@ -56,11 +56,7 @@ export default function AddNewPet() {
     if (open === false) clearErrors()
   }
 
-  const handleNewPet = (data: any) => {
-    data.photo =
-      'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2F0b3xlbnwwfHwwfHx8MA%3D%3Dhttps://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNhY2hvcnJvfGVufDB8fDB8fHww'
-    addNewPet(data, handleDialog, reset)
-  }
+  const handleNewPet = (data: any) => addNewPet(data, handleDialog, reset)
 
   const ErrorMessage = ({ message }: { message: string }) => (
     <div className="w-full flex items-center justify-center -mt-2 -ml-12">
