@@ -1,4 +1,4 @@
-# Backlgrs Challenge - Backend
+# Backlgrs Challenge - Frontend
 
 Backend para aplicação de adoção de pets.
 <br>
