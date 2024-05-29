@@ -34,8 +34,8 @@ export default function RootLayout({
             <Footer />
           </div>
         </QueryProvider>
+        <Toaster />
       </body>
-      <Toaster />
     </html>
   )
 }
